@@ -1,15 +1,15 @@
-import Generator from './components/Generator'
+import { useState } from 'react'
 import Hero from './components/Hero'
+import Generator from './components/Generator'
 import Workout from './components/Workout'
-import { useState } from "react"
+import { generateWorkout } from './utils/functions'
+
 
 function App() {
-
   const [workout, setWorkout] = useState(null)
   const [poison, setPoison] = useState('individual')
   const [muscles, setMuscles] = useState([])
   const [goal, setGoal] = useState('strength_power')
-
 
   function updateWorkout() {
     if (muscles.length < 1) {

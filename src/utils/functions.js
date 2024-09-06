@@ -1,4 +1,4 @@
-import { EXERCISES, SCHEMES, TEMPOS, WORKOUTS } from "./workoutBanks"
+import { EXERCISES, SCHEMES, TEMPOS, WORKOUTS } from "../utils/workoutBanks"
 const exercises = exercisesFlattener(EXERCISES)
 
 export function generateWorkout(args) {
@@ -20,7 +20,7 @@ export function generateWorkout(args) {
     let scheme = goal
     let sets = SCHEMES[scheme].ratio
         .reduce((acc, curr, index) => {
-            //make this compound and exercise muscle -> array of objects and destructure in loop
+
             return [
                 ...acc,
                 ...[...Array(parseInt(curr)).keys()].map((val) =>
@@ -72,7 +72,7 @@ export function generateWorkout(args) {
                 includedTracker.includes(curr) ||
                 !data[curr].muscles.includes(muscleGroup)
             ) {
-                // if (includedTracker.includes(curr)) { console.log('banana', curr) }
+
                 return acc;
             }
             return { ...acc, [curr]: exercises[curr] };
@@ -90,7 +90,7 @@ export function generateWorkout(args) {
             Math.floor(Math.random() * filteredOppList.length)
             ];
 
-        // console.log(randomExercise)
+
 
         if (!randomExercise) {
             return {};
@@ -116,7 +116,7 @@ export function generateWorkout(args) {
                 repsOrDuraction = Math.floor(85 / tempoSum);
             }
         } else {
-            //set to nearest 5 seconds
+
             repsOrDuraction = Math.ceil(parseInt(repsOrDuraction) / 5) * 5;
         }
         includedTracker.push(randomExercise);
